@@ -64,20 +64,18 @@ public class A1 {
 
 					String newWord = fileReader.next().toLowerCase().trim();
 					if (!newWord.matches("[^a-z]*")) {
+						if (!newWord.matches("^'[a-z]*")) {
+							Avengers.add(newWord);
+							wordCount += 1;
 
-					}
+							// int j = newWord.indexOf("'");
+							String[] arr = newWord.split("'");
+							newWord = arr[0];
+							// newWord = newWord.substring(0, j);
 
-					if (!newWord.matches("^'[a-z]*")) {
-						Avengers.add(newWord);
-						wordCount += 1;
-
-						if (newWord.contains("'")) {
-							int j = newWord.indexOf("'");
-							newWord = newWord.substring(0, j);
+						} else {
+							continue;
 						}
-
-					} else {
-						continue;
 					}
 
 					System.out.println(Avengers);
