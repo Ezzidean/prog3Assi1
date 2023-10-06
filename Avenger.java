@@ -22,6 +22,9 @@ public class Avenger implements Comparable<Avenger> {
 	public String getPerformerLastName() {
 		return performerLastName;
 	}
+	public String getLastName() {
+		return lastName;
+	}
 
 	public int getAliasCount() {
 		return aliasCount;

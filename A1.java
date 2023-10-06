@@ -25,11 +25,12 @@ public class A1 {
 			{ "spiderman", "parker", "holland" }, { "wintersoldier", "barnes", "stan" } };
 
 	private int topN = 4;
-	File file = new File("input4.txt");
+	File file = new File("input1.txt");
 	private Scanner input = new Scanner(System.in);
 	private int totalwordcount = 0;
 	private ArrayList<Avenger> avengersArrayList = new ArrayList<>();
 	private Map<String, Avenger> avengerMap = new HashMap<>();
+	private String foundWord;
 
 	public static void main(String[] args) {
 		A1 a1 = new A1();
@@ -59,7 +60,6 @@ public class A1 {
 			if (word.contains("'")) {
 				word = word.split("'")[0];
 			}
-			System.out.println(word);
 			// Step 3: Remove punctuation and digits
 			word = word.replaceAll("[^a-z]", "");
 
@@ -71,6 +71,7 @@ public class A1 {
 				for (String[] avengerInfo : avengerRoster) {
 					for (String avengerName : avengerInfo) {
 						if (word.equals(avengerName)) {
+							foundWord = word;
 							updateAvengerCounts(avengerInfo);
 							break;
 						}
@@ -95,22 +96,29 @@ public class A1 {
 		String alias = avengerInfo[0];
 		String lastName = avengerInfo[1];
 		String performerLastName = avengerInfo[2];
-
+		
 		Avenger avenger = avengerMap.get(alias);
 		// Print all ordered by appearance
 		// Todo: Print the list of avengers in the order they appeared in the input
 		// Make sure you follow the formatting example in the sample output
 		
 
-		if (avenger == null) {
-			avenger = new Avenger(alias, lastName, performerLastName);
-			avengersArrayList.add(avenger);
-			avengerMap.put(alias, avenger);
-		}
-
-		avenger.incrementAliasCount();
-		avenger.incrementLastNameCount();
-		avenger.incrementPerformerCount();
+		 if (avenger == null) {
+		        avenger = new Avenger(alias, lastName, performerLastName);
+		        avengersArrayList.add(avenger);
+		        avengerMap.put(alias, avenger);
+		    } else {
+		    }
+		 System.out.println(foundWord);
+		 if(foundWord.equals(alias)) {
+			 avenger.incrementAliasCount();
+		 }else if(foundWord.equals(lastName)) {
+			 avenger.incrementLastNameCount();
+		 }else if(foundWord.equals(performerLastName) ) {
+			 avenger.incrementPerformerCount();
+		 }
+				 
+		
 	}
 
 
