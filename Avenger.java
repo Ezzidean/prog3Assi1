@@ -64,7 +64,7 @@ public class Avenger implements Comparable<Avenger> {
 	
 	@Override
 	public int compareTo(Avenger o) {
-		int result = o.getAlias().compareTo(o.getAlias());
+		int result = this.getAlias().compareTo(o.getAlias());
 		
 		return result;
 	}

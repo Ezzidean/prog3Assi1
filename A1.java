@@ -59,7 +59,7 @@ public class A1 {
 			if (word.contains("'")) {
 				word = word.split("'")[0];
 			}
-			//System.out.println(word);
+			System.out.println(word);
 			// Step 3: Remove punctuation and digits
 			word = word.replaceAll("[^a-z]", "");
 
