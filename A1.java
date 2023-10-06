@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -34,6 +35,7 @@ public class A1 {
 
 	public void run() {
 		readInput();
+		System.out.println(avengersArrayList);
 	}
 
 	/**
@@ -41,6 +43,7 @@ public class A1 {
 	 * by alias or last name or performer's last name.
 	 */
 	private void readInput() {
+		
 		while (input.hasNext()) {
 			String word = input.next();
 			// Step 1: Remove leading and trailing spaces, convert to lowercase
@@ -50,7 +53,7 @@ public class A1 {
 			if (word.contains("'")) {
 				word = word.split("'")[0];
 			}
-
+			System.out.println(word);
 			// Step 3: Remove punctuation and digits
 			word = word.replaceAll("[^a-z]", "");
 
@@ -82,6 +85,12 @@ public class A1 {
 		String performerLastName = avengerInfo[2];
 
 		Avenger avenger = avengerMap.get(alias);
+		// Print all ordered by appearance
+		System.out.println("All avengers in the order they appeared in the input stream:");
+		// Todo: Print the list of avengers in the order they appeared in the input
+		// Make sure you follow the formatting example in the sample output
+		
+		System.out.println();
 
 		if (avenger == null) {
 			avenger = new Avenger(alias, lastName, performerLastName);
@@ -94,54 +103,6 @@ public class A1 {
 		avenger.incrementPerformerCount();
 	}
 
-	class Avenger {
-		private String alias;
-		private String lastName;
-		private String performerLastName;
-		private int aliasCount;
-		private int lastNameCount;
-		private int performerCount;
-
-		public Avenger(String alias, String lastName, String performerLastName) {
-			this.alias = alias;
-			this.lastName = lastName;
-			this.performerLastName = performerLastName;
-			this.aliasCount = 0;
-			this.lastNameCount = 0;
-			this.performerCount = 0;
-		}
-
-		public String getAlias() {
-			return alias;
-		}
-
-		public int getAliasCount() {
-			return aliasCount;
-		}
-
-		public int getLastNameCount() {
-			return lastNameCount;
-		}
-
-		public int getPerformerCount() {
-			return performerCount;
-		}
-
-		public int getTotalCount() {
-			return aliasCount + lastNameCount + performerCount;
-		}
-
-		public void incrementAliasCount() {
-			aliasCount++;
-		}
-
-		public void incrementLastNameCount() {
-			lastNameCount++;
-		}
-
-		public void incrementPerformerCount() {
-			performerCount++;
-		}
 
 		/**
 		 * print the results
@@ -160,6 +121,7 @@ public class A1 {
 			System.out.println("All avengers in the order they appeared in the input stream:");
 			// Todo: Print the list of avengers in the order they appeared in the input
 			// Make sure you follow the formatting example in the sample output
+			organizeList(avengersArrayList, false);
 			System.out.println();
 
 			// Print all ordered by AvengerComparatorFreqDesc
@@ -167,6 +129,9 @@ public class A1 {
 			// Todo: Print the topN most popular avengers, see the instructions for tie
 			// breaking
 			// Make sure you follow the formatting example in the sample output
+			Collections.sort(avengersArrayList, new AvengerPopularitySort());
+			organizeList(avengersArrayList, true);
+
 			System.out.println();
 
 			// Print top n ordered by AvengerPerformerComparatorFreqDesc
@@ -174,13 +139,31 @@ public class A1 {
 			// Todo: Print the topN most popular performers, see the instructions for tie
 			// breaking
 			// Make sure you follow the formatting example in the sample output
+			Collections.sort(avengersArrayList, new PerfomerPopularitySort());
+			organizeList(avengersArrayList, true);
 			System.out.println();
 
 			// Print all ordered by alias alphabetically
 			System.out.println("All mentioned avengers in alphabetical order:");
 			// Todo: Print the list of avengers in alphabetical order
 			// Make sure you follow the formatting example in the sample output
+			Collections.sort(avengersArrayList);
+			organizeList(avengersArrayList, false);
 			System.out.println();
+		}
+
+
+	public  void organizeList(ArrayList<Avenger> avengers,boolean showTopHeros) {
+		int index = 0;
+		while(index < avengers.size()) {
+
+			System.out.println(avengers.get(index).toString());
+			index++;
+			if(showTopHeros && index == topN  ) {
+				break;
+			}
+				
 		}
 	}
 }
+

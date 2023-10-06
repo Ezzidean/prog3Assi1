@@ -1,56 +1,70 @@
 
 public class Avenger implements Comparable<Avenger> {
-	private String heroAlias;
-	private String heroName;
-	private String performer;
+	private String alias;
+	private String lastName;
+	private String performerLastName;
+	private int aliasCount;
+	private int lastNameCount;
+	private int performerCount;
 
-	private int nameFreq;
-	private int aliasFreq;
-	private int performerFreq;
+	public Avenger(String alias, String lastName, String performerLastName) {
+		this.alias = alias;
+		this.lastName = lastName;
+		this.performerLastName = performerLastName;
+		this.aliasCount = 0;
+		this.lastNameCount = 0;
+		this.performerCount = 0;
+	}
 
-	// TODO: Implement the Avenger Class
-	public Avenger( String heroName, String heroAlias, String performer,int nameFreq, int alisFreq, int PerformerFreq) {
-		this.heroName = heroName;
-		this.heroAlias = heroAlias;
-		this.performer = performer;
-		this.nameFreq = nameFreq;
-		this.aliasFreq = alisFreq;
-		this.performerFreq = PerformerFreq;
+	public String getAlias() {
+		return alias;
 	}
-	/***
-	 *  returns the Avengers name
-	 * @return heroName
-	 */
-	public String getHeroName() {
-		return heroName;
+	public String getPerformerLastName() {
+		return performerLastName;
 	}
-	/***
-	 * returns the Avengers Alias
-	 * @return heroAlias
-	 */
-	public String getHeroAlias() {
-		return heroAlias;
+
+	public int getAliasCount() {
+		return aliasCount;
 	}
-	public String getPerformer() {
-		return performer;
+
+	public int getLastNameCount() {
+		return lastNameCount;
 	}
-	public int getNameFreq() {
-		return nameFreq;
+
+	public int getPerformerCount() {
+		return performerCount;
 	}
-	public int getAlisFreq() {
-		return aliasFreq;
+
+	public int getTotalCount() {
+		return aliasCount + lastNameCount + performerCount;
 	}
-	public int getPerformerFreq() {
-		return performerFreq;
+
+	public void incrementAliasCount() {
+		aliasCount++;
 	}
-	public int frequencySum() {
-		return nameFreq+ aliasFreq+ performerFreq;
+
+	public void incrementLastNameCount() {
+		lastNameCount++;
+	}
+
+	public void incrementPerformerCount() {
+		performerCount++;
 	}
 	
+	public String toString() {
+		String format = alias + " aka " + lastName
+				+ " performed by " + performerLastName
+				+ " mentioned "
+				+ "(n: " + lastNameCount
+				+ " + a: " + aliasCount
+				+ " + p: " + performerCount
+				+ ")" + " time(s)";
+		return format;
+	}
 	
 	@Override
 	public int compareTo(Avenger o) {
-		int result = o.getHeroAlias().compareTo(o.getHeroAlias());
+		int result = o.getAlias().compareTo(o.getAlias());
 		
 		return result;
 	}
