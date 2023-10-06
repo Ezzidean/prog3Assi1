@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,6 +25,7 @@ public class A1 {
 			{ "spiderman", "parker", "holland" }, { "wintersoldier", "barnes", "stan" } };
 
 	private int topN = 4;
+	File file = new File("input4.txt");
 	private Scanner input = new Scanner(System.in);
 	private int totalwordcount = 0;
 	private ArrayList<Avenger> avengersArrayList = new ArrayList<>();
@@ -35,7 +38,7 @@ public class A1 {
 
 	public void run() {
 		readInput();
-		System.out.println(avengersArrayList);
+		printResults();
 	}
 
 	/**
@@ -43,8 +46,11 @@ public class A1 {
 	 * by alias or last name or performer's last name.
 	 */
 	private void readInput() {
-		
-		while (input.hasNext()) {
+		 Scanner input;
+		try {
+			input = new Scanner(file);
+			
+			while (input.hasNext()) {
 			String word = input.next();
 			// Step 1: Remove leading and trailing spaces, convert to lowercase
 			word = word.trim().toLowerCase();
@@ -53,7 +59,7 @@ public class A1 {
 			if (word.contains("'")) {
 				word = word.split("'")[0];
 			}
-			System.out.println(word);
+			//System.out.println(word);
 			// Step 3: Remove punctuation and digits
 			word = word.replaceAll("[^a-z]", "");
 
@@ -72,6 +78,12 @@ public class A1 {
 				}
 			}
 		}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
 	}
 
 	/**
@@ -86,11 +98,9 @@ public class A1 {
 
 		Avenger avenger = avengerMap.get(alias);
 		// Print all ordered by appearance
-		System.out.println("All avengers in the order they appeared in the input stream:");
 		// Todo: Print the list of avengers in the order they appeared in the input
 		// Make sure you follow the formatting example in the sample output
 		
-		System.out.println();
 
 		if (avenger == null) {
 			avenger = new Avenger(alias, lastName, performerLastName);
