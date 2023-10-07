@@ -25,12 +25,12 @@ public class A1 {
 			{ "spiderman", "parker", "holland" }, { "wintersoldier", "barnes", "stan" } };
 
 	private int topN = 4;
-	File file = new File("input1.txt");
+	File file = new File("input2.txt");
 	private Scanner input = new Scanner(System.in);
 	private int totalwordcount = 0;
 	private ArrayList<Avenger> avengersArrayList = new ArrayList<>();
 	private Map<String, Avenger> avengerMap = new HashMap<>();
-	private String foundWord;
+	private String foundKeyWords;
 
 	public static void main(String[] args) {
 		A1 a1 = new A1();
@@ -47,10 +47,7 @@ public class A1 {
 	 * by alias or last name or performer's last name.
 	 */
 	private void readInput() {
-		 Scanner input;
-		try {
-			input = new Scanner(file);
-			
+		
 			while (input.hasNext()) {
 			String word = input.next();
 			// Step 1: Remove leading and trailing spaces, convert to lowercase
@@ -71,7 +68,7 @@ public class A1 {
 				for (String[] avengerInfo : avengerRoster) {
 					for (String avengerName : avengerInfo) {
 						if (word.equals(avengerName)) {
-							foundWord = word;
+							foundKeyWords = word;
 							updateAvengerCounts(avengerInfo);
 							break;
 						}
@@ -79,11 +76,7 @@ public class A1 {
 				}
 			}
 		}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		
 		
 	}
 
@@ -109,12 +102,13 @@ public class A1 {
 		        avengerMap.put(alias, avenger);
 		    } else {
 		    }
-		 System.out.println(foundWord);
-		 if(foundWord.equals(alias)) {
+		 System.out.println(foundKeyWords);
+		 
+		 if(foundKeyWords.equals(alias)) {
 			 avenger.incrementAliasCount();
-		 }else if(foundWord.equals(lastName)) {
+		 }else if(foundKeyWords.equals(lastName)) {
 			 avenger.incrementLastNameCount();
-		 }else if(foundWord.equals(performerLastName) ) {
+		 }else if(foundKeyWords.equals(performerLastName) ) {
 			 avenger.incrementPerformerCount();
 		 }
 				 
