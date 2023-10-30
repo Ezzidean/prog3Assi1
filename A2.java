@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -18,7 +17,7 @@ public class A2 {
 	private SLL<Avenger> orderAppeard = new SLL<>();
 	private SLL<Avenger> popularAdvengerOrder = new SLL<>(new AvengerPopularitySort());
 	private SLL<Avenger> popularPerformerOrder = new SLL<>(new PerfomerPopularitySort());
-	private SLL<Avenger> AlpabeticalAlisorder = new SLL<>(new AlphabeticallyAliasSort());
+	private SLL<Avenger> alpabeticalAlisorder = new SLL<>(new AlphabeticallyAliasSort());
 
 	public static void main(String[] args) {
 		A2 a2 = new A2();
@@ -129,7 +128,7 @@ public class A2 {
 		// Todo: Print the topN most popular avengers, see the instructions for tie
 		// breaking
 		// Make sure you follow the formatting example in the sample output
-		popularAdvengerOrder = sortLists(popularAdvengerOrder);
+		sortSLL(popularAdvengerOrder);
 		popularAdvengerOrder.printSLL(topN);
 		System.out.println();
 
@@ -138,7 +137,7 @@ public class A2 {
 		// Todo: Print the topN most popular performers, see the instructions for tie
 		// breaking
 		// Make sure you follow the formatting example in the sample output
-		popularPerformerOrder = sortLists( popularPerformerOrder);
+		 sortSLL( popularPerformerOrder);
 		popularPerformerOrder.printSLL(topN);
 		System.out.println();
 
@@ -146,20 +145,19 @@ public class A2 {
 		System.out.println("All mentioned avengers in alphabetical order:");
 		// Todo: Print the list of avengers in alphabetical order
 		// Make sure you follow the formatting example in the sample output
-		AlpabeticalAlisorder = sortLists( AlpabeticalAlisorder);
-		AlpabeticalAlisorder.printSLL();
+		 sortSLL( alpabeticalAlisorder);
+		alpabeticalAlisorder.printSLL();
 		System.out.println();
 	}
 	
 	/// add the contents of orderedApeared SLL to the other llist
-	public SLL<Avenger> sortLists(SLL<Avenger> sll) {
+	public void sortSLL(SLL<Avenger> sll) {
 		int j = orderAppeard.size();
 		int i = 0;
 		while(i < j) {
 			sll.addInOrder(orderAppeard.get(i));
 			i++;
 		}
-		return sll;
 		
 	}
 
