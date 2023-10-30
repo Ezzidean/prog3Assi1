@@ -156,15 +156,40 @@ public class SLL<T extends Comparable<T>>  {
 			return;
 		}
 		
-	
+		if(comparator != null) {
+		    
+			if(comparator.compare(getHead(), t) == 1) {
+				addHead(t);
+				return;
+			}else if(comparator.compare(getTail(), t) < 0) {
+				addTail(t);
+				return;
+			}else {
+				compare(t);
+				return;
+			}
+			
+			
+		}else {
+			
 			addTail(t);
-		
-		
-		
-		
-		
+		}
+
+		}
+	public void compare(T t) {
+		Node<T> newNode = new Node<T>(t);
+		Node<T> currentNode = head;
+		while(currentNode.getNext()!= null) {
+			if(comparator.compare(currentNode.getNext().getData(),t) > 0) {
+				newNode.setNext(currentNode.getNext());
+				currentNode.setNext(newNode);
+				break;
+			}
+			currentNode = currentNode.getNext();
+			
 		}
 		
+	}
 		
 	public void printSLL() {
 		Node<T> currentNode = head;
@@ -172,6 +197,15 @@ public class SLL<T extends Comparable<T>>  {
 		while(currentNode!= null) {
 			System.out.println(currentNode);
 			currentNode = currentNode.getNext();
+		}
+	}
+	public void printSLL(int limit) {
+		Node<T> currentNode = head;
+		int index = 0;
+		while(currentNode!= null && index < limit) {
+			System.out.println(currentNode);
+			currentNode = currentNode.getNext();
+			index++;
 		}
 	}
 

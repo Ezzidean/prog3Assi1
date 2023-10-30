@@ -16,9 +16,9 @@ public class A2 {
 	private Map<String, Avenger> avengerMap = new HashMap<>();
 	private String foundKeyWords;
 	private SLL<Avenger> orderAppeard = new SLL<>();
-	private SLL<Avenger> popularAdvengerOrder;
-	private SLL<Avenger> popularPerformerOrder;
-	private SLL<Avenger> AlpabeticalAlisorder;
+	private SLL<Avenger> popularAdvengerOrder = new SLL<>(new AvengerPopularitySort());
+	private SLL<Avenger> popularPerformerOrder = new SLL<>(new PerfomerPopularitySort());
+	private SLL<Avenger> AlpabeticalAlisorder = new SLL<>(new AlphabeticallyAliasSort());
 
 	public static void main(String[] args) {
 		A2 a2 = new A2();
@@ -117,11 +117,11 @@ public class A2 {
 		System.out.println("Total number of words: " + totalwordcount);
 		System.out.println("Number of Avengers Mentioned: " + orderAppeard.size());
 		System.out.println();
-		orderAppeard.printSLL();
 		// Print all ordered by appearance
 		System.out.println("All avengers in the order they appeared in the input stream:");
 		// Todo: Print the list of avengers in the order they appeared in the input
 		// Make sure you follow the formatting example in the sample output
+		orderAppeard.printSLL();
 		System.out.println();
 
 		// Print all ordered by AvengerComparatorFreqDesc
@@ -129,7 +129,8 @@ public class A2 {
 		// Todo: Print the topN most popular avengers, see the instructions for tie
 		// breaking
 		// Make sure you follow the formatting example in the sample output
-
+		popularAdvengerOrder = sortLists(popularAdvengerOrder);
+		popularAdvengerOrder.printSLL(topN);
 		System.out.println();
 
 		// Print top n ordered by AvengerPerformerComparatorFreqDesc
@@ -137,15 +138,29 @@ public class A2 {
 		// Todo: Print the topN most popular performers, see the instructions for tie
 		// breaking
 		// Make sure you follow the formatting example in the sample output
-		
+		popularPerformerOrder = sortLists( popularPerformerOrder);
+		popularPerformerOrder.printSLL(topN);
 		System.out.println();
 
 		// Print all ordered by alias alphabetically
 		System.out.println("All mentioned avengers in alphabetical order:");
 		// Todo: Print the list of avengers in alphabetical order
 		// Make sure you follow the formatting example in the sample output
-		
+		AlpabeticalAlisorder = sortLists( AlpabeticalAlisorder);
+		AlpabeticalAlisorder.printSLL();
 		System.out.println();
+	}
+	
+	/// add the contents of orderedApeared SLL to the other llist
+	public SLL<Avenger> sortLists(SLL<Avenger> sll) {
+		int j = orderAppeard.size();
+		int i = 0;
+		while(i < j) {
+			sll.addInOrder(orderAppeard.get(i));
+			i++;
+		}
+		return sll;
+		
 	}
 
 }
