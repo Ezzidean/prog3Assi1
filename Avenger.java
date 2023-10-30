@@ -6,7 +6,6 @@ public class Avenger implements Comparable<Avenger> {
 	private int aliasCount;
 	private int lastNameCount;
 	private int performerCount;
-    
 
 	/**
 	 * Assigns Avengers to attributes.
@@ -130,8 +129,4 @@ public class Avenger implements Comparable<Avenger> {
 
 		return result;
 	}
-	
-
-	
-	
 }
