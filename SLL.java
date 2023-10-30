@@ -158,7 +158,7 @@ public class SLL<T extends Comparable<T>>  {
 		
 		if(comparator != null) {
 		    
-			if(comparator.compare(getHead(), t) == 1) {
+			if(comparator.compare(getHead(), t) >= 1) {
 				addHead(t);
 				return;
 			}else if(comparator.compare(getTail(), t) < 0) {
