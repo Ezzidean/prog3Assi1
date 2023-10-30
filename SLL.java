@@ -47,6 +47,10 @@ public class SLL<T extends Comparable<T>>  {
 	public void addHead(T t) {
 		addHead(new Node<T>(t));
 	}
+	
+	public void addTail(T t) {
+		addTail(new Node<T>(t));
+	}
 
 	/**
 	 * Return head value
@@ -120,6 +124,15 @@ public class SLL<T extends Comparable<T>>  {
 		}
 		size++;
 	}
+	private void addTail(Node<T> n) {
+		if(tail == null) {
+			addHead(n);
+		}else {
+			tail.setNext(n);
+			tail = n;
+		}
+		size ++;
+	}
 
 	/*
 	 * Delete the node at the head of the list and return a pointer to it.
@@ -137,17 +150,30 @@ public class SLL<T extends Comparable<T>>  {
 	}
 	
 	public void addInOrder(T  t) {
-		int headResult;
-		int tailResult;
+		
 		if(head == null) {
 			addHead(t);
 			return;
 		}
 		
+	
+			addTail(t);
+		
+		
+		
+		
+		
 		}
 		
 		
-	
+	public void printSLL() {
+		Node<T> currentNode = head;
+		
+		while(currentNode!= null) {
+			System.out.println(currentNode);
+			currentNode = currentNode.getNext();
+		}
+	}
 
 
 }
