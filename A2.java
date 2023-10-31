@@ -137,7 +137,7 @@ public class A2 {
 		// Todo: Print the topN most popular performers, see the instructions for tie
 		// breaking
 		// Make sure you follow the formatting example in the sample output
-		 sortSLL( popularPerformerOrder);
+		sortSLL(popularPerformerOrder);
 		popularPerformerOrder.printSLL(topN);
 		System.out.println();
 
@@ -145,20 +145,22 @@ public class A2 {
 		System.out.println("All mentioned avengers in alphabetical order:");
 		// Todo: Print the list of avengers in alphabetical order
 		// Make sure you follow the formatting example in the sample output
-		 sortSLL( alpabeticalAlisorder);
+		sortSLL(alpabeticalAlisorder);
 		alpabeticalAlisorder.printSLL();
 		System.out.println();
 	}
-	
-	/// add the contents of orderedApeared SLL to the other llist
+
+	/**
+	 * add the contents of orderedApeared SLL to the other list
+	 */
 	public void sortSLL(SLL<Avenger> sll) {
 		int j = orderAppeard.size();
 		int i = 0;
-		while(i < j) {
+		while (i < j) {
 			sll.addInOrder(orderAppeard.get(i));
 			i++;
 		}
-		
+
 	}
 
 }

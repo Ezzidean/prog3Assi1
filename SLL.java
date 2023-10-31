@@ -1,17 +1,27 @@
 import java.util.Comparator;
 
-public class SLL<T extends Comparable<T>>  {
-	
+public class SLL<T extends Comparable<T>> {
+
 	private Node<T> head, tail;
 	private int size;
 	private Comparator<T> comparator;
-	
+
+	/**
+	 * Sets values of head,tail, comparator, size
+	 * 
+	 */
 	public SLL() {
 		head = null;
 		tail = null;
 		comparator = null;
 		size = 0;
 	}
+
+	/**
+	 * Creates a comparator for list head, tail and size
+	 * 
+	 * @param comparator
+	 */
 	public SLL(Comparator<T> comparator) {
 		this.comparator = comparator;
 		head = null;
@@ -47,7 +57,7 @@ public class SLL<T extends Comparable<T>>  {
 	public void addHead(T t) {
 		addHead(new Node<T>(t));
 	}
-	
+
 	public void addTail(T t) {
 		addTail(new Node<T>(t));
 	}
@@ -109,9 +119,10 @@ public class SLL<T extends Comparable<T>>  {
 	}
 
 	// Private methods
-
-	/*
-	 * Add a new Node to the head of the list.
+	/**
+	 * Adds a new Node to the head of the list.
+	 * 
+	 * @param n
 	 */
 	private void addHead(Node<T> n) {
 		if (head == null) // empty list
@@ -124,18 +135,29 @@ public class SLL<T extends Comparable<T>>  {
 		}
 		size++;
 	}
+
+	/**
+	 * Adds a new Node to the tail of the list.
+	 * 
+	 * @param n
+	 */
 	private void addTail(Node<T> n) {
-		if(tail == null) {
+		if (tail == null) {
 			addHead(n);
-		}else {
+		} else {
 			tail.setNext(n);
 			tail = n;
 		}
-		size ++;
+		size++;
 	}
 
 	/*
 	 * Delete the node at the head of the list and return a pointer to it.
+	 */
+	/**
+	 * Delete the node at the head of the list and return a pointer to it.
+	 * 
+	 * @return n
 	 */
 	private Node<T> delHead() {
 		Node<T> n = null;
@@ -148,66 +170,85 @@ public class SLL<T extends Comparable<T>>  {
 		}
 		return n;
 	}
-	
-	public void addInOrder(T  t) {
-		
-		if(head == null) {
+
+	/**
+	 * Adds the nodes at either the head or tail or compares them bases on value
+	 * 
+	 * @param t value to compare nodes
+	 */
+	public void addInOrder(T t) {
+
+		if (head == null) {
 			addHead(t);
 			return;
 		}
-		
-		if(comparator != null) {
-		    
-			if(comparator.compare(getHead(), t) >= 1) {
+
+		if (comparator != null) {
+
+			if (comparator.compare(getHead(), t) >= 1) {
 				addHead(t);
 				return;
-			}else if(comparator.compare(getTail(), t) < 0) {
+			} else if (comparator.compare(getTail(), t) < 0) {
 				addTail(t);
 				return;
-			}else {
+			} else {
 				compare(t);
 				return;
 			}
-			
-			
-		}else {
-			
+
+		} else {
+
 			addTail(t);
 		}
 
-		}
+	}
+
+	/**
+	 * Compares nodes
+	 * 
+	 * @param t
+	 */
 	public void compare(T t) {
 		Node<T> newNode = new Node<T>(t);
 		Node<T> currentNode = head;
-		while(currentNode.getNext()!= null) {
-			if(comparator.compare(currentNode.getNext().getData(),t) > 0) {
+		while (currentNode.getNext() != null) {
+			if (comparator.compare(currentNode.getNext().getData(), t) > 0) {
 				newNode.setNext(currentNode.getNext());
 				currentNode.setNext(newNode);
 				break;
 			}
 			currentNode = currentNode.getNext();
-			
+
 		}
-		
+
 	}
-		
+
+	/**
+	 * Prints the nodes in the list
+	 * 
+	 */
 	public void printSLL() {
 		Node<T> currentNode = head;
-		
-		while(currentNode!= null) {
+
+		while (currentNode != null) {
 			System.out.println(currentNode);
 			currentNode = currentNode.getNext();
 		}
 	}
+
+	/**
+	 * Prints the nodes in the list
+	 * 
+	 * @param limit for the while loop
+	 */
 	public void printSLL(int limit) {
 		Node<T> currentNode = head;
 		int index = 0;
-		while(currentNode!= null && index < limit) {
+		while (currentNode != null && index < limit) {
 			System.out.println(currentNode);
 			currentNode = currentNode.getNext();
 			index++;
 		}
 	}
-
 
 }
