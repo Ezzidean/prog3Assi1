@@ -6,6 +6,7 @@ public class Avenger implements Comparable<Avenger> {
 	private int aliasCount;
 	private int lastNameCount;
 	private int performerCount;
+	private int insertOrder;
     
 
 	/**
@@ -129,6 +130,12 @@ public class Avenger implements Comparable<Avenger> {
 		int result = this.getAlias().compareTo(o.getAlias());
 
 		return result;
+	}
+	public void SetInsertionOrder(int i) {
+		insertOrder=i;
+	}
+	public int  insertionOrder() {
+		return insertOrder;
 	}
 	
 

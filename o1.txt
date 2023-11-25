@@ -1,0 +1,10 @@
+Total number of words: 42
+
+All avengers in the order they appeared in the input stream:
+
+Top 4 most popular avengers:
+
+Top 4 most popular performers:
+
+All mentioned avengers in alphabetical order:
+
