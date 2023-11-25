@@ -201,13 +201,12 @@ public class A3 {
 		System.out.println();
 
 		// TODO: Print the actual height and the optimal height for each of the four trees.
-//		System.out.println("Height of the mention order tree is : " + ??
-//				+ " (Optimal height for this tree is : " + ?? + ")");
-//		System.out.println("Height of the alphabetical tree is : " + ??
-//				+ " (Optimal height for this tree is : " + ?? + ")");
-//		System.out.println("Height of the most frequent tree is : " + ??
-//				+ " (Optimal height for this tree is : " + ?? + ")");
-//		System.out.println("Height of the most frequent performer tree is : " + ??
-//		+ " (Optimal height for this tree is : " + ?? + ")");
+		System.out.println("Height of the mention order tree is : " + mentionBST.height(mentionBST.root) + "Optimal height for this tree is :" + mentionBST.optimalHeight(mentionBST.root));
+		
+		System.out.println("Height of the alphabetical tree is : " + alphabeticalBST.height(alphabeticalBST.root) + "Optimal height for this tree is :" + alphabeticalBST.optimalHeight(alphabeticalBST.root));
+		
+		System.out.println("Height of the most frequent tree is : " + mostFrequentBST.height(mostFrequentBST.root) + "Optimal height for this tree is :" + mostFrequentBST.optimalHeight(mostFrequentBST.root));
+		
+		System.out.println("Height of the most frequent performer tree is : " + mostFrequentPerformerBST.height(mostFrequentPerformerBST.root) + "Optimal height for this tree is :" + mostFrequentPerformerBST.optimalHeight(mostFrequentPerformerBST.root));
 	}
 }
