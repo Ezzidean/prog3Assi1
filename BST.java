@@ -84,10 +84,8 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
                     return root.left;
                 }
 
-                // Node with two children: Get the inorder successor (smallest in the right subtree)
                 root.data = minValue(root.getRight());
 
-                // Delete the inorder successor
                 root.right = delete(root.right, value);
             }
 

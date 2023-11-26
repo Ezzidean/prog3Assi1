@@ -155,6 +155,7 @@ public class A3 {
 	 * print the results
 	 */
 	private void printResults() {
+		
 		// Todo: Print the total number of words (this total should not include words that are all digits or punctuation.)
 		System.out.println("Total number of words: " + totalwordcount);
 		// TODO: Print the number of mentioned avengers after deleting "barton" and "banner".
@@ -175,9 +176,14 @@ public class A3 {
 		System.out.println("Top " + topN + " most popular avengers:");
 		// TODO: Print the most popular avengers, see the instructions for tie breaking
 		// Make sure you follow the formatting example in the sample output
+		int count=0;
+
 		Iterator<Avenger> popavenger = mostPopularAvengerBST.iterator();
-		while(popavenger.hasNext()) {
+		while(popavenger.hasNext() && count < 4) {
 			System.out.println(popavenger.next());
+			count ++;
+			
+			
 		}
 		System.out.println();
 
@@ -187,7 +193,9 @@ public class A3 {
 		
 		
 		Iterator<Avenger> popperformer = mostPopularPerformerBST.iterator();
-		while(popperformer.hasNext()) {
+		count = 0;
+		while(popperformer.hasNext() && count < 4) {
+			count ++;
 			System.out.println(popperformer.next());
 		}
 		System.out.println();
@@ -196,6 +204,7 @@ public class A3 {
 		// TODO: Print the list of avengers in alphabetical order
 		Iterator<Avenger> it = alphabticalBST.iterator();
 		while(it.hasNext()) {
+			
 			System.out.println(it.next());
 		}
 		System.out.println();
