@@ -152,13 +152,13 @@ public class A3 {
 	}
 
 	
-	
 	private int optimalHeight(BST<Avenger> list) {
-		if (list.getSize() <= 1) {
-			return list.height();
-		}
-		return(int) Math.floor((Math.log(list.getSize())/ Math.log(2)));
-	}
+	      if (list.getSize() <= 1) {
+	         return list.height();
+	      }
+	      return (int) Math.floor((Math.log(list.getSize()) / Math.log(2)));
+	   } 
+	
 	/**
 	 * print the results
 	 */
@@ -220,12 +220,12 @@ public class A3 {
 
 		
 		// TODO: Print the actual height and the optimal height for each of the four trees.
-		System.out.println("Height of the mention order tree is : " + mentionBST.height() + "(Optimal height for this tree is :" + mentionBST.optimalHeight(mentionBST) + ")");
+		System.out.println("Height of the mention order tree is : " + mentionBST.height()+ "(Optimal height for this tree is :" + optimalHeight(mentionBST) + ")");
 		
-		System.out.println("Height of the alphabetical tree is : " + alphabticalBST.height() + "(Optimal height for this tree is :" + alphabticalBST.optimalHeight(alphabticalBST) + ")");
+		System.out.println("Height of the alphabetical tree is : " + alphabticalBST.height() + "(Optimal height for this tree is :" + optimalHeight(alphabticalBST) + ")");
 		
-		System.out.println("Height of the most frequent tree is : " + mostPopularAvengerBST.height() + "(Optimal height for this tree is :" + mostPopularAvengerBST.optimalHeight(mostPopularAvengerBST) + ")");
+		System.out.println("Height of the most frequent tree is : " + mostPopularAvengerBST.height() + "(Optimal height for this tree is :" + optimalHeight(mostPopularAvengerBST) + ")");
 		
-		System.out.println("Height of the most frequent performer tree is : " + mostPopularPerformerBST.height() + "(Optimal height for this tree is :" + mostPopularPerformerBST.optimalHeight(mostPopularPerformerBST) + ")");
+		System.out.println("Height of the most frequent performer tree is : " + mostPopularPerformerBST.height() + "(Optimal height for this tree is :" + optimalHeight(mostPopularPerformerBST) + ")");
 	}
 }
