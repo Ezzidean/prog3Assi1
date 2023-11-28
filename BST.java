@@ -51,20 +51,20 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 
         public void add(T d) {
             BSTNode n = new BSTNode(d);
-            if (root == null) {
+            if (root() == null) {
                 size++;
                 root = n;
             } else {
-                add(root, n);
+                add(root(), n);
             }
         }
         public void traverse(int travType) {
 
         	
-        	traverse(root, travType);
+        	traverse(root(), travType);
         }
         public void delete(T value) {
-            root = delete(root, value);
+            root = delete(root(), value);
         }
 
         private BSTNode delete(BSTNode root, T value) {
@@ -128,7 +128,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
             }
         }
         public void find(T d) {
-        	find( d,  root);
+        	find( d,  root());
         }
         private T find(T d, BSTNode r) {
             if (r == null)
@@ -141,7 +141,35 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
             else
                 return find(d, r.getRight());
         }
-    
+        
+        
+        /* Implement a height method. */
+        private int height(BSTNode r) {
+            int hit = -1;
+
+            if (r == null) {
+               return hit;
+            }
+            else if (r.isLeaf()) {
+            	hit = 0;
+            }
+            else {
+               int leftHeight = 0;
+               int rightHeight = 0;
+               if (r.getLeft() != null) {
+                  leftHeight = height(r.getLeft());
+               }
+               if (r.getRight() != null) {
+                  rightHeight = height(r.getRight());
+               }
+               hit = Math.max(leftHeight, rightHeight) + 1;
+            }
+            return hit;
+         }
+        public int height() {
+            return height(root);
+         }
+        
         private Queue<T> queue = new LinkedList<T>();
 	    private void visit(BSTNode r) {
 
@@ -201,7 +229,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
         	
             public  BSTIteratorInOrder() {
                 queue.clear();
-                traverse(root,INORDER);
+                traverse(root(),INORDER);
             }
             @Override
             public boolean hasNext() {
@@ -220,7 +248,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
         	
             public  BSTItrator(int order) {
                 queue.clear();
-                traverse(root,order);
+                traverse(root(),order);
             }
             @Override
             public boolean hasNext() {
@@ -249,5 +277,9 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
     public Iterator<T> iterator(int traversalOrder) {
         return new BSTItrator(traversalOrder);
     }
+	public BSTNode root() {
+		return root;
+	}
+
     
 }
