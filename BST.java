@@ -4,19 +4,27 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 
+/**
+ * Binary Search Tree (BST) implementation in Java.
+ *
+ * @param <T> The type of data stored in the BST, must implement Comparable interface.
+ */
 public class BST<T extends Comparable<T>> implements Iterable<T> {
-    private Comparator comparator;
+    // Inner class representing a node in the BST
+
     class BSTNode implements Comparable<BSTNode> {
             private T data;
             private BSTNode left;
             private BSTNode right;
             
+            // Constructor
             public BSTNode(T d) {
                 setLeft(null);
                 setRight(null);
                 setData(d);
             }
-
+            
+            // Getter and setter methods
             public T getData() { return data; }
             public void setData(T d) { data = d; }
             public void setLeft(BSTNode l) { left = l; }
@@ -31,10 +39,14 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
                 return this.getData().compareTo(o.getData());
             }
      }
+    
+    // Private members of the BST class
+    	private Comparator comparator;
 
         private BSTNode root;
 	    private int size;
-
+	    
+	    // Constants for traversal types
         public static final int INORDER=0;
 	    public static final int PREORDER=1;
 	    public static final int POSTORDER=2;
@@ -78,6 +90,8 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
                 root.right = delete(root.right, value);
             } else {
                 // Node with only one child or no child
+                size-= 1;
+
                 if (root.left == null) {
                     return root.right;
                 } else if (root.right == null) {
@@ -86,6 +100,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
 
                 root.data = minValue(root.getRight());
 
+                
                 root.right = delete(root.right, value);
             }
 
@@ -98,6 +113,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
                 minValue = root.left.data;
                 root = root.left;
             }
+
             return minValue;
         }
         
@@ -113,7 +129,7 @@ public class BST<T extends Comparable<T>> implements Iterable<T> {
                 if(r.getLeft() == null) {
                     r.setLeft(n);
                     size++;
-    
+
                 }
                 else
                     add(r.getLeft(), n);

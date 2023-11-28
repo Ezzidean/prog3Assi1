@@ -36,11 +36,17 @@ public class A3 {
 	private BST<Avenger> mostPopularAvengerBST = new BST<Avenger>(new AvengerComparatorFreqDesc());
 	private BST<Avenger> mostPopularPerformerBST = new BST<Avenger>(new AvengerPerformerComparatorFreqDesc());
 	
+	 /**
+     * Main method to run the Avenger Statistics program.
+     * @param args Command-line arguments (not used).
+     */
 	public static void main(String[] args) {
 		A3 a3 = new A3();
 		a3.run();
 	}
-
+	/**
+     * Method to execute the main logic of the Avenger Statistics program.
+     */
 	public void run() {
 		readInput();
 		
@@ -48,6 +54,9 @@ public class A3 {
 		printResults();
 	}
 	
+	/**
+     * Create alternative order BSTs after deleting specific avengers from the alphabetical tree.
+     */
 	private void createdAlternativeOrderBSTs() {
 		/* TODO:
 		 *   - delete the following two avengers (if they exist) from the alphabetical tree
@@ -72,10 +81,9 @@ public class A3 {
 		
 	}
 
-	/**
-	 * read the input stream and keep track how many times avengers are mentioned by
-	 * alias or last name or performer name.
-	 */
+	 /**
+     * Read the input stream and keep track of how many times avengers are mentioned by alias, last name, or performer name.
+     */
 	private void readInput() {
 		/* Create a mention index counter and initialize it to 1
 		 * While the scanner object has not reached end of stream, 
@@ -120,7 +128,10 @@ public class A3 {
 		}
 	}
 	
-	
+	/**
+     * Update avenger counts based on the found keyword.
+     * @param avengerInfo Array containing alias, last name, and performer last name of an avenger.
+     */
 	private void updateAvengerCounts(String[] avengerInfo) {
 		String alias = avengerInfo[0];
 		String lastName = avengerInfo[1];
@@ -151,7 +162,11 @@ public class A3 {
 
 	}
 
-	
+	/**
+     * Calculate the optimal height for a BST.
+     * @param list The BST for which to calculate the optimal height.
+     * @return The calculated optimal height.
+     */
 	private int optimalHeight(BST<Avenger> list) {
 	      if (list.getSize() <= 1) {
 	         return list.height();
@@ -160,7 +175,7 @@ public class A3 {
 	   } 
 	
 	/**
-	 * print the results
+	 * print the results 
 	 */
 	private void printResults() {
 		

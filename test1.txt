@@ -1,5 +1,5 @@
 Total number of words: 42
-Number of Avengers Mentioned: 10
+Number of Avengers Mentioned: 8
 
 All avengers in the order they appeared in the input stream:
 captainamerica aka rogers performed by evans mentioned (n: 1 + a: 1 + p: 1) time(s)
@@ -33,3 +33,7 @@ thor aka odinson performed by hemsworth mentioned (n: 1 + a: 1 + p: 0) time(s)
 warmachine aka rhodes performed by cheadle mentioned (n: 1 + a: 1 + p: 1) time(s)
 wintersoldier aka barnes performed by stan mentioned (n: 1 + a: 1 + p: 0) time(s)
 
+Height of the mention order tree is : 3(Optimal height for this tree is :3)
+Height of the alphabetical tree is : 4(Optimal height for this tree is :3)
+Height of the most frequent tree is : 4(Optimal height for this tree is :3)
+Height of the most frequent performer tree is : 4(Optimal height for this tree is :3)
